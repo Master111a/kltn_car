@@ -1,0 +1,157 @@
+/* .color-tab-title {
+  font-family: "Dosis", sans-serif;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  font-size: 20px;
+  align-items: center;
+}
+
+.color-circle {
+  border-radius: 100%;
+  min-width: 40px;
+  min-height: 40px;
+  margin: 4px 16px;
+  cursor: pointer;
+  transition: 100ms ease-in-out;
+}
+
+.colors-list {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.color-circle.selected {
+  outline-offset: 3px;
+  outline: 1px solid #d7d7d7;
+} */
+/* --------------------------------- */
+
+/* .color-tab-title {
+  font-family: "Dosis", sans-serif;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.colors-tray {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colors-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.color-circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin-left: 10px;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.7),
+      rgba(0, 0, 0, 0.2)
+    ),
+    var(--color); /* Applies your color as base */
+/* transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.color-circle.selected {
+  outline: 3px solid #d5d1d0;
+  transform: scale(1.15);
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(0, 0, 0, 0.45);
+}  */
+
+.color-palette {
+  position: fixed; /* Cố định thanh màu */
+  bottom: 20px; /* Cách cạnh dưới 20px */
+  left: 50%; /* Canh giữa màn hình theo chiều ngang */
+  transform: translateX(-50%); /* Giữ thanh màu ở giữa */
+  display: flex; /* Hiển thị các nút màu theo hàng ngang */
+  gap: 10px; /* Khoảng cách giữa các nút màu */
+  z-index: 1000; /* Đảm bảo thanh màu luôn hiển thị trên cùng */
+  /* Nền màu trắng mờ */
+  /* Khoảng cách bên trong */
+  border-radius: 8px; /* Góc bo tròn */
+  /* Tạo bóng */
+}
+
+.color-tab-title {
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco",
+    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.colors-tray {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.colors-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.color-circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin-left: 10px;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.7),
+      rgba(0, 0, 0, 0.2)
+    ),
+    var(--color); /* Sử dụng mã màu tùy chỉnh */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 -3px 8px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+.color-circle.selected {
+  outline: 3px solid #d5d1d0;
+  transform: scale(1.15);
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.4),
+    0 10px 20px rgba(0, 0, 0, 0.45);
+}
+
+.contain-color {
+  background-color: #f2f2f2;
+  border-radius: 30px;
+  padding-right: 40px;
+}

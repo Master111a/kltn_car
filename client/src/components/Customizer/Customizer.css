@@ -1,0 +1,317 @@
+/** @format */
+
+.slider-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-customizer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list-component {
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  /* margin-left: 50px; */
+  overflow: auto;
+}
+/* 
+  
+  .flex-flow-component{
+    height: 100px;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+  } */
+
+.color-customizer-tab {
+  margin-top: 16px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.color-generator {
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.description-input {
+  outline: none;
+  visibility: visible;
+  min-width: 180px;
+  background: #f5f5f5;
+  padding: 12px;
+  border: none;
+  line-height: 18px;
+  font-size: 14px;
+  border-radius: 32px;
+  margin-right: 16px;
+  opacity: 1;
+  transition: opacity 200ms ease-in-out;
+}
+
+.button-container {
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  margin-left: 2%;
+}
+.apply-button {
+  width: 60px;
+  height: 60px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #f8f8f8, #e6e6e6);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  margin-right: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.apply-button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.apply-button:active {
+  transform: translateY(1px);
+  background: linear-gradient(145deg, #e6e6e6, #f8f8f8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 360px) {
+  .description-input {
+    min-width: unset !important;
+  }
+  .icons-list {
+    display: none !important;
+  }
+}
+
+.color-picker {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  position: sticky; /* Giữ cố định trong khung nhìn khi cuộn */
+  bottom: 10px; /* Cách mép dưới một khoảng */
+  left: 20px; /* Thêm vị trí left */
+  width: 300px; /* Thêm width cố định */
+  z-index: 10; /* Hiển thị trên nội dung khác */
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9); /* Nền mờ */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+  border-radius: 15px;
+}
+
+.grid-component {
+  position: relative;
+}
+
+.color-input {
+  -webkit-appearance: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin: 0px 8px;
+}
+
+.color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+.color-input::-webkit-color-swatch-wrapper {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.file-picker .upload-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-picker .upload-button:hover {
+  background-color: #0056b3;
+}
+
+/** @format */
+
+/* --- Style chung cho các card (giống CardComponent) --- */
+.wheel-options,
+.steeringWheel-options {
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  display: block !important; /* Force hiển thị */
+}
+
+/* Style cho title */
+.wheel-options h3,
+.steeringWheel-options h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Style cho từng option */
+.wheel-option,
+.steeringWheel-option {
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 8px;
+  transition: all 0.2s ease;
+  width: 220px !important;
+  height: 55px !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.wheel-option:hover,
+.steeringWheel-option:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.wheel-option img,
+.steeringWheel-option img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Khi phần tử được chọn */
+.selected {
+  background: rgba(58, 133, 255, 0.2); /* Hiệu ứng màu xanh nhẹ */
+  box-shadow: 0 0 14px rgba(58, 133, 255, 0.4);
+  transform: scale(1.1);
+  border: 2px solid rgba(58, 133, 255, 0.6);
+}
+
+/* Tạo sidebar nhỏ gọn hơn */
+.side-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px; /* Chiều rộng cố định */
+  height: 100vh;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+  z-index: 100;
+  padding: 10px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng hover cho card */
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Màu nền cho thẻ card */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  margin-bottom: 8px;
+}
+
+/* Xóa style heading hiện tại */
+.select-heading {
+  display: none;
+}
+
+/* Chỉnh lại style cho các thẻ wheel và steering wheel */
+.wheel-option,
+.steeringWheel-option {
+  display: flex;
+  align-items: center;
+  background: rgba(128, 128, 128, 0.7); /* Màu xám giống thẻ Floor mat */
+  border-radius: 15px; /* Bo tròn lớn hơn giống thẻ Floor mat */
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 95%;
+  margin-bottom: 15px; /* Thêm khoảng cách giữa các thẻ */
+  height: 70px; /* Chiều cao cố định giống thẻ Floor mat */
+}
+
+/* Định dạng hình ảnh */
+.wheel-option img,
+.steeringWheel-option img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 20px;
+}
+
+/* Text bên cạnh ảnh */
+.wheel-option .option-name,
+.steeringWheel-option .option-name {
+  font-size: 20px; /* Font size lớn hơn */
+  color: white;
+  font-weight: 500;
+}
+
+/* Container cho các heading */
+.wheels-section-title,
+.steeringWheels-section-title {
+  background-color: #e8e7f0; /* Màu nền tím nhạt */
+  padding: 12px 0;
+  text-align: center;
+  width: 100%;
+  margin: 15px 0;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Loại bỏ padding và margin không cần thiết từ container */
+.wheels-list,
+.steeringWheels-list {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}

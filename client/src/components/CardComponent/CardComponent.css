@@ -1,0 +1,44 @@
+/** @format */
+
+.card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15); /* Hiệu ứng kính mờ */
+  backdrop-filter: blur(10px); /* Làm mờ nền */
+  border-radius: 16px; /* Bo góc */
+  padding: 12px;
+  width: 90%;
+  max-width: 380px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Đổ bóng tinh tế */
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.02); /* Hiệu ứng phóng to nhẹ khi hover */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.card img {
+  /* border-radius: 12px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px; */
+  width: 70px !important;
+  height: 70px !important;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pad-5 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}

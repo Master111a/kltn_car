@@ -1,0 +1,166 @@
+/** @format */
+
+.header {
+  top: 16px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 16px;
+  width: 75vw;
+}
+
+.app .title {
+  font-size: 14px;
+  margin-bottom: 0px;
+  font-weight: 600;
+  padding-right: 50px;
+  /* flex: 1; */
+}
+
+.side-container {
+  flex: 1;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.car-region {
+  width: 100%; /* Sử dụng toàn bộ chiều rộng */
+  margin-left: 0; /* Bỏ margin để sử dụng không gian bên trái */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.webgl {
+  /* border: 1px solid rgb(243 238 238 / 10%); */
+  box-shadow: -20px -4px 16px 0 rgba(0, 0, 0, 0.1);
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Căn giữa canvas */
+  width: 100%; /* Sử dụng toàn bộ chiều rộng */
+  height: 100vh; /* Sử dụng toàn bộ chiều cao */
+}
+
+.color-palate {
+  padding: 10px;
+  background: white;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%); /* Căn giữa bảng màu */
+  z-index: 10;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.icons-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0 10px;
+}
+
+.upload-container {
+  position: relative; /* Đảm bảo nút upload không bị ẩn */
+  z-index: 20; /* Đặt nút upload nằm trên canvas */
+  bottom: 0px; /* Điều chỉnh để nút upload nằm gần canvas */
+}
+
+/* Ẩn hoặc loại bỏ sidebar */
+.sidebar {
+  display: none; /* Ẩn sidebar */
+}
+
+.customizer-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+  z-index: 100;
+}
+
+/* Nút hiển thị thông tin */
+.info-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.info-button:hover {
+  background-color: #45a049;
+}
+
+/* Style cho NotePopup để hiển thị bên phải */
+.note-popup {
+  right: 20px !important;
+  top: 80px !important;
+  transform: none !important;
+  max-width: 350px !important;
+  z-index: 2000 !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.note-header h3 {
+  color: #4caf50 !important;
+  font-size: 18px !important;
+}
+
+.note-body p {
+  white-space: pre-line !important; /* Hiển thị xuống dòng đúng định dạng */
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+/* Animation cho popup */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.note-popup {
+  animation: popupFadeIn 0.3s ease-out !important;
+}

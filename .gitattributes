@@ -1,0 +1,2 @@
+*.glb filter=lfs diff=lfs merge=lfs -text
+client/public/model/MercedesC63-AMGV3-FIX.glb filter=lfs diff=lfs merge=lfs -text

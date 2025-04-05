@@ -1,0 +1,83 @@
+/** @format */
+
+.note-popup {
+  position: absolute;
+  top: 20%;
+  right: 15%;
+  transform: translate(50%, -20%);
+  width: 320px;
+  max-width: 90%; /* Đảm bảo phù hợp trên màn hình nhỏ */
+  background-color: #fff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Cải thiện bóng đổ */
+  border-radius: 10px;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.4s ease-out; /* Hiệu ứng mượt hơn */
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0; /* Đường kẻ nhạt hơn */
+  padding-bottom: 10px;
+}
+
+.note-header h3 {
+  margin: 0;
+  font-size: 1.4rem; /* Tiêu đề lớn hơn */
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem; /* Kích thước lớn hơn */
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #333; /* Hiệu ứng hover */
+}
+
+.note-body {
+  padding-top: 15px;
+}
+
+.note-body p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444; /* Màu chữ tối hơn một chút */
+  line-height: 1.5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(50%, -30%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(50%, -20%);
+  }
+}
+
+/* Responsive popup */
+@media (max-width: 480px) {
+  .note-popup {
+    width: 90%;
+    top: 15%; /* Dịch lên trên một chút */
+    padding: 15px;
+  }
+
+  .note-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .note-body p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,68 @@
+/** @format */
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 250px;
+  opacity: 0.9;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 50vh;
+  scrollbar-width: thin;
+  padding-right: 5px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  margin-left: -35px;
+}
+
+.cards-list::-webkit-scrollbar {
+  display: none;
+}
+
+.list-parts {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.list-parts:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Nền tối sang trọng */
+  backdrop-filter: blur(10px); /* Hiệu ứng kính mờ */
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 10px;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+  max-width: 240px;
+}
+
+.card-image img {
+  width: 55px !important;
+  height: 55px !important;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.card-content {
+  padding-left: 15px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffcc00;
+}
