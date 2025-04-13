@@ -3,61 +3,82 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddProduct() {
     const navigate = useNavigate();
-    const onAddUser = (user) => {
-        console.log(user);
-    };
 
+    // State để lưu thông tin form
     const [formData, setFormData] = useState({
         name: "",
-        email: "",
+        price: "",
+        image: "",
+        accessories: {
+            wheels: "",
+            glass: "",
+            color: "",
+            engine: "",
+        },
     });
-
+    // State để hiển thị thông báo lỗi
     const [error, setError] = useState("");
+
+    // Xử lý thay đổi input
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+        if (name in formData.accessories) {
+            setFormData((prev) => ({
+                ...prev,
+                accessories: { ...prev.accessories, [name]: value },
+            }));
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
     };
-
+    const handleAddCar = (newCar) => {
+        console.log(newCar);
+    };
     // Xử lý submit form
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Kiểm tra validation
-        if (!formData.name || !formData.email) {
-            setError("Vui lòng điền đầy đủ thông tin.");
+        if (!formData.name || !formData.price) {
+            setError("Please fill in basic information (Name and Price).");
             return;
         }
 
-        // Kiểm tra định dạng email cơ bản
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            setError("Email không hợp lệ.");
-            return;
-        }
-
-        // Tạo tài khoản mới
-        const newUser = {
-            id: Date.now(),
+        // Tạo sản phẩm mới
+        const newCar = {
+            id: Date.now(), // ID tạm thời
             name: formData.name,
-            email: formData.email,
+            price: parseFloat(formData.price) || 0,
+            image: formData.image || "",
+            accessories: {
+                wheels: formData.accessories.wheels || "Standard",
+                glass: formData.accessories.glass || "Standard",
+                color: formData.accessories.color || "Default",
+                engine: formData.accessories.engine || "Standard",
+            },
         };
 
-        // Gọi hàm onAddUser để thêm tài khoản vào danh sách
-        onAddUser(newUser);
+        // Gọi hàm onAddCar để thêm sản phẩm vào danh sách
+        handleAddCar(newCar);
 
         // Reset form và điều hướng về trang danh sách
-        setFormData({ name: "", email: "" });
+        setFormData({
+            name: "",
+            price: "",
+            image: "",
+            accessories: { wheels: "", glass: "", color: "", engine: "" },
+        });
         setError("");
-        navigate("/");
+        navigate("/cars");
     };
 
     return (
-        <div className="h-full p-6 relative bg-amber-50">
+        <div className="min-h-screen bg-green-100 p-6">
             <h1 className="text-3xl font-bold text-center mb-6 text-black">
-                Thêm tài khoản mới
+                Add New Car
             </h1>
 
             <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
@@ -73,8 +94,8 @@ export default function AddProduct() {
                     <div className="mb-4">
                         <label
                             htmlFor="name"
-                            className="block text-base font-semibold text-gray-700">
-                            Tên
+                            className="block text-sm font-medium text-gray-700">
+                            Name
                         </label>
                         <input
                             type="text"
@@ -82,41 +103,132 @@ export default function AddProduct() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Nhập tên"
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter car name"
                         />
                     </div>
 
-                    {/* Trường Email */}
+                    {/* Trường Giá */}
                     <div className="mb-4">
                         <label
-                            htmlFor="email"
-                            className="block text-base font-semibold text-gray-700">
-                            Email
+                            htmlFor="price"
+                            className="block text-sm font-medium text-gray-700">
+                            Price ($)
                         </label>
                         <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
+                            type="number"
+                            id="price"
+                            name="price"
+                            value={formData.price}
                             onChange={handleChange}
-                            className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Nhập email"
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter price"
                         />
+                    </div>
+
+                    {/* Trường Hình ảnh */}
+                    <div className="mb-4">
+                        <label
+                            htmlFor="image"
+                            className="block text-sm font-medium text-gray-700">
+                            Image URL (Optional)
+                        </label>
+                        <input
+                            type="text"
+                            id="image"
+                            name="image"
+                            value={formData.image}
+                            onChange={handleChange}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Enter image URL"
+                        />
+                    </div>
+
+                    {/* Trường Phụ kiện */}
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-gray-700">
+                            Accessories
+                        </label>
+                        <div className="grid grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <label
+                                    htmlFor="wheels"
+                                    className="block text-sm text-gray-600">
+                                    Wheels
+                                </label>
+                                <input
+                                    type="text"
+                                    id="wheels"
+                                    name="wheels"
+                                    value={formData.accessories.wheels}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Enter wheel type"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="glass"
+                                    className="block text-sm text-gray-600">
+                                    Glass
+                                </label>
+                                <input
+                                    type="text"
+                                    id="glass"
+                                    name="glass"
+                                    value={formData.accessories.glass}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Enter glass type"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="color"
+                                    className="block text-sm text-gray-600">
+                                    Color
+                                </label>
+                                <input
+                                    type="text"
+                                    id="color"
+                                    name="color"
+                                    value={formData.accessories.color}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Enter color"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="engine"
+                                    className="block text-sm text-gray-600">
+                                    Engine
+                                </label>
+                                <input
+                                    type="text"
+                                    id="engine"
+                                    name="engine"
+                                    value={formData.accessories.engine}
+                                    onChange={handleChange}
+                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Enter engine type"
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     {/* Nút Submit và Hủy */}
                     <div className="flex justify-end space-x-3">
                         <button
                             type="button"
-                            onClick={() => navigate(-1)}
+                            onClick={() => navigate("/cars")}
                             className="bg-gray-300 cursor-pointer text-black px-4 py-2 rounded hover:bg-gray-400">
-                            Hủy
+                            Cancel
                         </button>
                         <button
                             type="submit"
-                            className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            Thêm
+                            className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Add
                         </button>
                     </div>
                 </form>

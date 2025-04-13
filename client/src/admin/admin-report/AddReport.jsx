@@ -1,18 +1,24 @@
+// src/AddReport.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AddReport() {
     const navigate = useNavigate();
-    const onAddUser = (user) => {
-        console.log(user);
+    const handleAddReport = (newReport) => {
+        console.log(newReport);
     };
-
+    // State để lưu thông tin form
     const [formData, setFormData] = useState({
-        name: "",
-        email: "",
+        title: "",
+        content: "",
+        date: new Date().toISOString().split("T")[0], // Ngày mặc định là hôm nay
+        status: "Open", // Trạng thái mặc định
     });
 
+    // State để hiển thị thông báo lỗi
     const [error, setError] = useState("");
+
+    // Xử lý thay đổi input
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -26,38 +32,38 @@ export default function AddReport() {
         e.preventDefault();
 
         // Kiểm tra validation
-        if (!formData.name || !formData.email) {
-            setError("Vui lòng điền đầy đủ thông tin.");
+        if (!formData.title || !formData.content) {
+            setError("Please fill in the title and content completely.");
             return;
         }
 
-        // Kiểm tra định dạng email cơ bản
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            setError("Email không hợp lệ.");
-            return;
-        }
-
-        // Tạo tài khoản mới
-        const newUser = {
-            id: Date.now(),
-            name: formData.name,
-            email: formData.email,
+        // Tạo báo cáo mới
+        const newReport = {
+            id: Date.now(), // ID tạm thời
+            title: formData.title,
+            content: formData.content,
+            date: formData.date,
+            status: formData.status,
         };
 
-        // Gọi hàm onAddUser để thêm tài khoản vào danh sách
-        onAddUser(newUser);
+        // Gọi hàm onAddReport để thêm báo cáo vào danh sách
+        handleAddReport(newReport);
 
         // Reset form và điều hướng về trang danh sách
-        setFormData({ name: "", email: "" });
+        setFormData({
+            title: "",
+            content: "",
+            date: new Date().toISOString().split("T")[0],
+            status: "Open",
+        });
         setError("");
-        navigate("/");
+        navigate("/reports");
     };
 
     return (
         <div className="h-full p-6 relative bg-amber-50">
             <h1 className="text-3xl font-bold text-center mb-6 text-black">
-                Thêm tài khoản mới
+                Add Report
             </h1>
 
             <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
@@ -69,40 +75,75 @@ export default function AddReport() {
                         </div>
                     )}
 
-                    {/* Trường Tên */}
+                    {/* Trường Tiêu đề */}
                     <div className="mb-4">
                         <label
-                            htmlFor="name"
+                            htmlFor="title"
                             className="block text-base font-semibold text-gray-700">
-                            Tên
+                            Title
                         </label>
                         <input
                             type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
+                            id="title"
+                            name="title"
+                            value={formData.title}
                             onChange={handleChange}
                             className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Nhập tên"
+                            placeholder="Enter report title"
                         />
                     </div>
 
-                    {/* Trường Email */}
+                    {/* Trường Nội dung */}
                     <div className="mb-4">
                         <label
-                            htmlFor="email"
+                            htmlFor="content"
                             className="block text-base font-semibold text-gray-700">
-                            Email
+                            Content
                         </label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
+                        <textarea
+                            id="content"
+                            name="content"
+                            value={formData.content}
                             onChange={handleChange}
                             className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Nhập email"
+                            placeholder="Enter report content"
+                            rows="4"
                         />
+                    </div>
+
+                    {/* Trường Ngày tạo */}
+                    <div className="mb-4">
+                        <label
+                            htmlFor="date"
+                            className="block text-base font-semibold text-gray-700">
+                            Date
+                        </label>
+                        <input
+                            type="date"
+                            id="date"
+                            name="date"
+                            value={formData.date}
+                            onChange={handleChange}
+                            className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                        />
+                    </div>
+
+                    {/* Trường Trạng thái */}
+                    <div className="mb-4">
+                        <label
+                            htmlFor="status"
+                            className="block text-base font-semibold text-gray-700">
+                            Status
+                        </label>
+                        <select
+                            id="status"
+                            name="status"
+                            value={formData.status}
+                            onChange={handleChange}
+                            className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <option value="Open">Open</option>
+                            <option value="Resolved">Resolved</option>
+                        </select>
                     </div>
 
                     {/* Nút Submit và Hủy */}
@@ -111,12 +152,12 @@ export default function AddReport() {
                             type="button"
                             onClick={() => navigate(-1)}
                             className="bg-gray-300 cursor-pointer text-black px-4 py-2 rounded hover:bg-gray-400">
-                            Hủy
+                            Cancel
                         </button>
                         <button
                             type="submit"
                             className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            Thêm
+                            Add
                         </button>
                     </div>
                 </form>
