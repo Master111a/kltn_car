@@ -27,14 +27,14 @@ export default function AddAccount() {
 
         // Kiểm tra validation
         if (!formData.name || !formData.email) {
-            setError("Vui lòng điền đầy đủ thông tin.");
+            setError("Please fill in all information.");
             return;
         }
 
         // Kiểm tra định dạng email cơ bản
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
-            setError("Email không hợp lệ.");
+            setError("Invalid email.");
             return;
         }
 
@@ -57,7 +57,7 @@ export default function AddAccount() {
     return (
         <div className="h-full p-6 relative bg-amber-50">
             <h1 className="text-3xl font-bold text-center mb-6 text-black">
-                Thêm tài khoản mới
+                Add new account
             </h1>
 
             <div className="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
@@ -74,7 +74,7 @@ export default function AddAccount() {
                         <label
                             htmlFor="name"
                             className="block text-base font-semibold text-gray-700">
-                            Tên
+                            Name
                         </label>
                         <input
                             type="text"
@@ -83,7 +83,7 @@ export default function AddAccount() {
                             value={formData.name}
                             onChange={handleChange}
                             className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Nhập tên"
+                            placeholder="Enter your name"
                         />
                     </div>
 
@@ -101,7 +101,7 @@ export default function AddAccount() {
                             value={formData.email}
                             onChange={handleChange}
                             className="mt-1 block text-black/80 font-semibold w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Nhập email"
+                            placeholder="Enter your email"
                         />
                     </div>
 
@@ -111,12 +111,12 @@ export default function AddAccount() {
                             type="button"
                             onClick={() => navigate(-1)}
                             className="bg-gray-300 cursor-pointer text-black px-4 py-2 rounded hover:bg-gray-400">
-                            Hủy
+                            Cancel
                         </button>
                         <button
                             type="submit"
                             className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            Thêm
+                            Add
                         </button>
                     </div>
                 </form>
